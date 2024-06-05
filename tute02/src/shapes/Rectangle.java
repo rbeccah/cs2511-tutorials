@@ -9,6 +9,7 @@ public class Rectangle extends Shape {
         System.out.println("Inside Rectangle constructor with one argument");
     }
 
+    // Method overloading - functions have the same name and return type but different parameters or arguments
     public Rectangle(String name, int width, int height) {
         this(name);
         this.width = width;
