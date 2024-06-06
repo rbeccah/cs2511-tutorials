@@ -55,11 +55,13 @@ public class Employee {
         return getClass().getName() + "[name=" + name + ", salary=" + salary + "]";
     }
 
+    //* equals() compares the contents between two classes
+    // ? Why is the signature not public boolean equals(Employee other)
+    // We allow users to compare any pair of objects. From perspective of equals() method, it 
+    // does not know what classes it is comparing to, so make most generic assumption that class is Object
     @Override
-    // ? Why do we not take in Employee? 
-    // From the perspective of equals(), make the most generic assumption that the object type is Object. 
     public boolean equals(Object obj) {
-        // Check if obj is the same instance
+    // Check if obj is the same instance
         if (this == obj) return true;
 
         // Check if obj is null
@@ -68,8 +70,8 @@ public class Employee {
         // Check if the objects are the same class type
         if (getClass() != obj.getClass()) return false;
 
-        // At this point, we know that both objects are the same class. 
-        // Then, we downcast obj safely to an Employee class
+        // Once confirmed that obj is the same class, it can be downcasted safely 
+        // to current class so attributes can be compared
         Employee other = (Employee) obj;
         // Then, we can compare each of the attributes inside the class
         if (name.equals(other.name) && salary == other.salary) {
@@ -83,9 +85,9 @@ public class Employee {
         System.out.println(e1);
 
         Employee e2 = new Employee("Carl", 100);
-        // In C to compare strings, "==" is comparing the actual references (memory)
-        // In C to actually compare contents of string, we use strcmp()
-        // In Java, to compare contents in a class we use equals()
+        //* Similar to strings in C. Using '==' compares two object references to see if they refer to the same instance. 
+        //* Under the hood, it basically compares the memory the memory location of the objects
+        //* To compare contents, in C we use strcmp(). Similarly, in Java to compare classes we use equals() */
         System.out.println(e1 == e2);
     }
 }
