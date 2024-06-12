@@ -8,6 +8,11 @@ public class Wondrous {
     private final int MY_MAGIC_NUMBER = 42;
 
     public List<Integer> wondrous(int start) {
+        if (start == 1) {
+            return new ArrayList<>();
+        } else if (start < 1) {
+            throw new IllegalArgumentException("wondrous must start >= 1");
+        }
         int current = start;
         List<Integer> sequence = new ArrayList<Integer>();
 
@@ -20,6 +25,7 @@ public class Wondrous {
             }
         }
 
+        sequence.add(current);
         return sequence;
     }
 

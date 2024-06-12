@@ -88,6 +88,6 @@ public class Employee {
         //* Similar to strings in C. Using '==' compares two object references to see if they refer to the same instance. 
         //* Under the hood, it basically compares the memory the memory location of the objects
         //* To compare contents, in C we use strcmp(). Similarly, in Java to compare classes we use equals() */
-        System.out.println(e1 == e2);
+        // System.out.println(e1 == e2);
     }
 }
