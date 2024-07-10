@@ -1,5 +1,11 @@
 package thrones;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import thrones.decorator.Helmet;
+
 public class Game {
     private List<Character> characters = new ArrayList<Character>();
 
@@ -35,10 +41,15 @@ public class Game {
 
     public static void main(String[] args) {
         // Replace constructors below with factory pattern
+        // Right now, the user is deciding the positions of the characters upon instantiation. 
+        // We want to change it so characters are randomly assigned their position
         Game game = new Game();
-        game.addCharacter(new King(0, 0));
-        game.addCharacter(new Dragon(0, 1));
-        game.addCharacter(new Queen(2, 2));
+        
+        Character king = EntityFactory.createKing();
+        Character queen = EntityFactory.createQueen();
+
+        // Queen wearing a helmet
+        Character helmetedQueen = new Helmet(queen);
         game.play();
     }
 }

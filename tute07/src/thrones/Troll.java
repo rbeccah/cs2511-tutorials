@@ -1,20 +1,25 @@
 package thrones;
 
 /**
- * A dragon can only move up, down, left or right, and has a 1 in 6 chance of
+ * A troll can only move up, down, left or right, and has a 1 in 6 chance of
  * inflicting 20 points of damage.
  *
  * @author Robert Clifton-Everest
  *
  */
-public class Dragon extends Character {
+/*
+ * Concrete component subclasses
+ */
+public class Troll extends CharacterBase {
 
-    public Dragon(int x, int y) {
+    public Troll(int x, int y) {
         super(x, y);
     }
 
     @Override
     public void attack(Character victim) {
+        // Implementing 1/6 probability with randomness
+        // * Will be helpful for lab07!
         if (Math.random() * 6 < 1)
             victim.damage(20);
     }

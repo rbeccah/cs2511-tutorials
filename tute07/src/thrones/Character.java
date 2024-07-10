@@ -8,37 +8,42 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public abstract class Character {
-    private int healthPoints;
+public interface Character {
 
-    private int x, y;
+    public int getHealthPoints();
 
-    public Character(int x, int y) {
-        healthPoints = 100;
-        this.x = x;
-        this.y = y;
-    }
+    public int getX();
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
+    public int getY();
 
-    public int getX() {
-        return x;
-    }
+    public void setX(int x);
 
-    public int getY() {
-        return y;
-    }
+    public void setY(int y);
 
     /**
      * Cause this character the given amount of damage.
      *
      * @param points
      */
-    public void damage(int points) {
-        healthPoints -= points;
-    }
+    // * STEP 3: Character now delegates to the respective concrete Characters
+    public void damage(int points);
+
+    /**
+     * This character attacks the given victim, causing them damage according to
+     * their rules.
+     *
+     * @param victim
+     */
+    public void attack(Character victim);
+
+    /**
+     * Can this character move by the given amount along the x and y axes.
+     *
+     * @param x
+     * @param y
+     * @return True if they can move by that amount, false otherwise
+     */
+    public boolean canMove(int dx, int dy);
 
     /**
      * Attempts to make a move to a square in the game, given all of the characters
@@ -46,8 +51,10 @@ public abstract class Character {
      * If it is a valid move but the square is occupied, attacks the character and returns ATTACK
      * If it is a valid move and the square is free, returns SUCCESS
      */
-    public MoveResult makeMove(int x, int y, List<Character> characters) {
-        if (!canMove(this.x - x, this.y - y)) {
+    // Default is an implementation which all classes that implement this Character will have
+    // The classes that implement Character do not need to provide implement for makeMove() 
+    public default MoveResult makeMove(int x, int y, List<Character> characters) {
+        if (!canMove(getX() - x, getY() - y)) {
             return MoveResult.INVALID;
         }
 
@@ -58,30 +65,9 @@ public abstract class Character {
             }
         }
         
-        this.x = x;
-        this.y = y;
+        setX(x);
+        setY(y);
 
         return MoveResult.SUCCESS;
     }
-
-    public String toString() {
-        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
-    }
-
-    /**
-     * This character attacks the given victim, causing them damage according to
-     * their rules.
-     *
-     * @param victim
-     */
-    public abstract void attack(Character victim);
-
-    /**
-     * Can this character move by the given amount along the x and y axes.
-     *
-     * @param x
-     * @param y
-     * @return True if they can move by that amount, false otherwise
-     */
-    public abstract boolean canMove(int dx, int dy);
 }
