@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Stack",
+            "request": "launch",
+            "mainClass": "stack.Stack",
+            "projectName": "tute08_4785e7a8"
+        },
+        {
+            "type": "java",
+            "name": "BankAccountThreadedAccessor",
+            "request": "launch",
+            "mainClass": "heist.BankAccountThreadedAccessor",
+            "projectName": "tute08_4785e7a8"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - BankAccountThreadedAccessor",
             "request": "launch",
             "mainClass": "heist.BankAccountThreadedAccessor",

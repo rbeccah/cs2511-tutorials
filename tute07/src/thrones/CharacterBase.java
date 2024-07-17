@@ -1,5 +1,7 @@
 package thrones;
 
+import java.util.List;
+
 /* 
  * Superclass to the concrete components of Character
  * e.g. King, Queen
