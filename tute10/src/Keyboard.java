@@ -21,4 +21,9 @@ public class Keyboard implements ComputerComponent {
         return name;
     }
 
+    @Override
+    public void accept(ComputerVisitor visitor) {
+        visitor.visit(this);
+    }
+
 }
