@@ -4,6 +4,7 @@ public class Rectangle extends Shape {
     public int height;
     public int width;
 
+    // ? Rectangle has 2 constructors. Why? 
     public Rectangle(String color) {
         super(color);
         System.out.println("Inside Rectangle constructor with one argument");
@@ -17,6 +18,7 @@ public class Rectangle extends Shape {
     }
 
     public static void main(String[] args) {
+        // ? How does the program know which constructor we are calling? 
         Rectangle r = new Rectangle("red", 10, 20);
     }
 }
