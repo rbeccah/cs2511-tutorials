@@ -14,7 +14,7 @@ public class C {
 
         // The line below does not compile because
         // this do not have access to private variables in super class
-//        System.out.println("varPriv: " + varPriv);
+       System.out.println("varPriv: " + varPriv);
 
         // TODO Are protected and default useful access modifiers?
     }

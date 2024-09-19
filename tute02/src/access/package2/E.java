@@ -18,6 +18,6 @@ public class E extends A {
         A a = new A();
         System.out.println("varPub: " + a.varPub);
         // TODO Does the following line compile if uncommented?
-//        System.out.println("varPro: " + a.varPro);
+    //    System.out.println("varPro: " + a.varPro);
     }
 }
