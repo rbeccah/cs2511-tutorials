@@ -8,7 +8,14 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public class OnlineSeminar extends Seminar {
+public class OnlineSeminar {
+    /*
+     * Seminar has a list of attendees, and attendees can book the Seminar
+     * OnlineSeminar you cannot book the Seminar, there is no trainer, it doesn't have a start date
+     * OnlineSeminar doesn't actually behave like a Seminar
+     * 
+     * This class violates LSP! 
+     */
     private String videoURL;
 
     private List<String> watched;
