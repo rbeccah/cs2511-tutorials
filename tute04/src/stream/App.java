@@ -18,6 +18,10 @@ public class App {
             ints.add(Integer.parseInt(string));
         }
         System.out.println(ints);
+
+         //* Demonstrate filter and reduce */
+        // From a list of integers, take only the even numbers and find the sum
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 2);
     }
 
 
