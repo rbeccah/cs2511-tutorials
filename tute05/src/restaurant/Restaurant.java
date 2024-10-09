@@ -23,6 +23,9 @@ public class Restaurant {
         }
     }
 
+    // ? How does this switch statement break the open-closed principle? 
+
+    // ? Why does the new implementation not violate the open-closed principle? 
     public double cost(List<Meal> order, String payee) {
         switch (chargingStrategy) {
             case "standard":
