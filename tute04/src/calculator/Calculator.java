@@ -18,6 +18,10 @@ public class Calculator {
         return a - b;
     }
 
+    /**
+     * @precondition
+     * @postcondition
+     */
     public static Double multiply(Double a, Double b) {
         return a * b;
     }
@@ -38,6 +42,10 @@ public class Calculator {
         return Math.sin(angle);
     }
 
+    /**
+     * @precondition
+     * @postcondition
+     */
     public static Double cos(Double angle) {
         return Math.cos(angle);
     }

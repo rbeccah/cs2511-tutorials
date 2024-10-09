@@ -30,6 +30,10 @@ public class TrainingSystem {
             }
         }
         return null;
+
+        // ? How does the Training System violate the Law of Demeter
+
+        // ? What other properties of this design is undesirable
     }
     
     // ? How does the Training System violate the Law of Demeter
