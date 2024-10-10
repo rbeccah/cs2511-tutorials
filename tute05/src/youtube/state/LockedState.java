@@ -15,22 +15,27 @@ public class LockedState extends ViewingState {
      */
     @Override
     public void onLock() {
-
+        VideoPlayer player = getVideoPlayer();
+        if (player.getIsPlaying()) {
+            player.changeState(new PlayingState(player));
+        } else {
+            player.changeState(new ReadyState(player));
+        }
     }
 
     @Override
     public void onPlay() {
-
+        System.out.println("Locked");
     }
 
     @Override
     public void onNext() {
-        
+        System.out.println("Locked");
     }
 
     @Override
     public String reportState() {
-        return null;
+        return "LockedState";
     }
     
 }
