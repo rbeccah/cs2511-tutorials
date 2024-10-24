@@ -1,5 +1,11 @@
 package thrones;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import thrones.factory.DragonFactory;
+
 public class Game {
     private List<Character> characters = new ArrayList<Character>();
 
@@ -36,9 +42,15 @@ public class Game {
     public static void main(String[] args) {
         // Replace constructors below with factory pattern
         Game game = new Game();
-        game.addCharacter(new King(0, 0));
-        game.addCharacter(new Dragon(0, 1));
-        game.addCharacter(new Queen(2, 2));
+        Character king = EntityFactory.createKing();
+        Character queen = EntityFactory.createQueen();
+
+        // * Method 2: Factory Pattern
+        DragonFactory dragonFactory = new DragonFactory();
+        Character dragon = dragonFactory.createCharacter();
+
         game.play();
+
+        // TODO: Construct 1 Queen wearing Helmet and Chainmail
     }
 }

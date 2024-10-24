@@ -31,6 +31,14 @@ public abstract class Character {
         return y;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     /**
      * Cause this character the given amount of damage.
      *
@@ -39,6 +47,23 @@ public abstract class Character {
     public void damage(int points) {
         healthPoints -= points;
     }
+
+    /**
+     * This character attacks the given victim, causing them damage according to
+     * their rules.
+     *
+     * @param victim
+     */
+    public abstract void attack(Character victim);
+
+    /**
+     * Can this character move by the given amount along the x and y axes.
+     *
+     * @param x
+     * @param y
+     * @return True if they can move by that amount, false otherwise
+     */
+    public abstract boolean canMove(int dx, int dy);
 
     /**
      * Attempts to make a move to a square in the game, given all of the characters
@@ -58,8 +83,8 @@ public abstract class Character {
             }
         }
         
-        this.x = x;
-        this.y = y;
+        setX(x);
+        setY(y);
 
         return MoveResult.SUCCESS;
     }
@@ -67,21 +92,4 @@ public abstract class Character {
     public String toString() {
         return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
     }
-
-    /**
-     * This character attacks the given victim, causing them damage according to
-     * their rules.
-     *
-     * @param victim
-     */
-    public abstract void attack(Character victim);
-
-    /**
-     * Can this character move by the given amount along the x and y axes.
-     *
-     * @param x
-     * @param y
-     * @return True if they can move by that amount, false otherwise
-     */
-    public abstract boolean canMove(int dx, int dy);
 }
