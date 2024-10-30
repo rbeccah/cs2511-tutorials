@@ -40,7 +40,7 @@ public class Game {
 
 
     public static void main(String[] args) {
-        // Replace constructors below with factory pattern
+        // TODO: Replace constructors below with Factory Pattern
         Game game = new Game();
         Character king = EntityFactory.createKing();
         Character queen = EntityFactory.createQueen();
