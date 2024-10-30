@@ -31,6 +31,14 @@ public abstract class Character {
         return y;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     /**
      * Cause this character the given amount of damage.
      *
@@ -38,34 +46,6 @@ public abstract class Character {
      */
     public void damage(int points) {
         healthPoints -= points;
-    }
-
-    /**
-     * Attempts to make a move to a square in the game, given all of the characters
-     * If it is an invalid move, returns INVALID.
-     * If it is a valid move but the square is occupied, attacks the character and returns ATTACK
-     * If it is a valid move and the square is free, returns SUCCESS
-     */
-    public MoveResult makeMove(int x, int y, List<Character> characters) {
-        if (!canMove(this.x - x, this.y - y)) {
-            return MoveResult.INVALID;
-        }
-
-        for (Character character : characters) {
-            if (character != this && character.getX() == x && character.getY() == y) {
-                attack(character);
-                return MoveResult.ATTACK;
-            }
-        }
-        
-        this.x = x;
-        this.y = y;
-
-        return MoveResult.SUCCESS;
-    }
-
-    public String toString() {
-        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
     }
 
     /**
@@ -84,4 +64,32 @@ public abstract class Character {
      * @return True if they can move by that amount, false otherwise
      */
     public abstract boolean canMove(int dx, int dy);
+
+    public String toString() {
+        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
+    }
+
+    /**
+     * Attempts to make a move to a square in the game, given all of the characters
+     * If it is an invalid move, returns INVALID.
+     * If it is a valid move but the square is occupied, attacks the character and returns ATTACK
+     * If it is a valid move and the square is free, returns SUCCESS
+     */
+    public MoveResult makeMove(int x, int y, List<Character> characters) {
+        if (!canMove(getX() - x, getY() - y)) {
+            return MoveResult.INVALID;
+        }
+
+        for (Character character : characters) {
+            if (character != this && character.getX() == x && character.getY() == y) {
+                attack(character);
+                return MoveResult.ATTACK;
+            }
+        }
+        
+        setX(x);
+        setY(y);
+
+        return MoveResult.SUCCESS;
+    }
 }

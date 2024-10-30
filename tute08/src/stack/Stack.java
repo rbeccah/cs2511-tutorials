@@ -10,6 +10,15 @@ import java.util.List;
  * @param <E>
  * 
  */
+
+// ? What is E
+
+// ? What is an Iterable interface?
+
+// ? Why does Iterable have E as well? 
+
+// ? What methods does it force us to implement?
+
 public class Stack<E> implements Iterable<E> {
     
     /**
@@ -17,6 +26,13 @@ public class Stack<E> implements Iterable<E> {
      * @param element
      */
     public void push(E element) {}
+
+    /**
+     * Returns the top element of the stack, without removing it.
+     */
+    public E peek() {
+        return null;
+    }
 
     /**
      * Removes the top element of the stack, and returns that element.
@@ -27,9 +43,9 @@ public class Stack<E> implements Iterable<E> {
     }
 
     /**
-     * Returns the top element of the stack, without removing it.
+     * Returns the stack as an ArrayList
      */
-    public E peek() {
+    public ArrayList<E> toArrayList() {
         return null;
     }
 
@@ -46,18 +62,22 @@ public class Stack<E> implements Iterable<E> {
     public int size() {
         return 0;
     }
-    
-    /**
-     * Returns the stack as an ArrayList
-     */
-    public ArrayList<E> toArrayList() {
-        return null;
-    }
+
+    // ? What does <? extends Integer> mean?
+
+    // ? Why don't we just do Stack<Integer>?
+
+    // ? What is the difference between `?` and E?
 
     public static Integer sumStack(Stack<? extends Integer> stack) {
         return 0;
     }
 
+    /**
+     * Pretty print a stack containing arbitrary elements, delimited by "," and enclosed by "[]"
+     * "[1, 2, 3]"
+     * @param stack
+     */
     public static void prettyPrint(Stack<?> stack) {}
         
 
@@ -69,6 +89,12 @@ public class Stack<E> implements Iterable<E> {
         stack.push("you");
         stack.push("today");
         prettyPrint(stack);
+
+        Stack<Integer> stack2 = new Stack<Integer>();
+        stack2.push(2);
+        stack2.push(3);
+        stack2.push(1);
+        System.out.println(Stack.sumStack(stack2));
     }
 
 }
