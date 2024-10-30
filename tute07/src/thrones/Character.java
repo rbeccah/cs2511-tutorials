@@ -39,14 +39,6 @@ public abstract class Character {
         this.y = y;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     /**
      * Cause this character the given amount of damage.
      *
@@ -73,6 +65,10 @@ public abstract class Character {
      */
     public abstract boolean canMove(int dx, int dy);
 
+    public String toString() {
+        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
+    }
+
     /**
      * Attempts to make a move to a square in the game, given all of the characters
      * If it is an invalid move, returns INVALID.
@@ -80,7 +76,7 @@ public abstract class Character {
      * If it is a valid move and the square is free, returns SUCCESS
      */
     public MoveResult makeMove(int x, int y, List<Character> characters) {
-        if (!canMove(this.x - x, this.y - y)) {
+        if (!canMove(getX() - x, getY() - y)) {
             return MoveResult.INVALID;
         }
 
@@ -95,9 +91,5 @@ public abstract class Character {
         setY(y);
 
         return MoveResult.SUCCESS;
-    }
-
-    public String toString() {
-        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
     }
 }
