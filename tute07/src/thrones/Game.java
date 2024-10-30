@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Game {
     private List<Character> characters = new ArrayList<Character>();
 
@@ -42,6 +46,6 @@ public class Game {
         Character queen = EntityFactory.createQueen();
         game.play();
 
-        // TODO: Construct 1 Queen wearing Helmet and Chainmail
+        // TODO: Construct 1 Queen wearing Helmet and Chainmail using the Decorator Pattern
     }
 }
