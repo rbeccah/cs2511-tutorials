@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import thrones.decorator.ChainMail;
+import thrones.decorator.Helmet;
 import thrones.factory.DragonFactory;
 
 public class Game {
@@ -52,5 +54,7 @@ public class Game {
         game.play();
 
         // TODO: Construct 1 Queen wearing Helmet and Chainmail
+        Character helmetedQueen = new Helmet(queen);
+        Character helmetedChainMailQueen = new ChainMail(helmetedQueen);
     }
 }

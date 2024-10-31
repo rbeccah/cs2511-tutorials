@@ -8,45 +8,29 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public abstract class Character {
-    private int healthPoints;
+/*
+ * Component interface
+ * All concrete components (wrappee) and decorators (wrapper) implement this
+ */
+public interface Character {
 
-    private int x, y;
+    public int getHealthPoints();
 
-    public Character(int x, int y) {
-        healthPoints = 100;
-        this.x = x;
-        this.y = y;
-    }
+    public int getX();
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
+    public int getY();
 
-    public int getX() {
-        return x;
-    }
+    public void setX(int x);
 
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
+    public void setY(int y);
 
     /**
      * Cause this character the given amount of damage.
      *
      * @param points
      */
-    public void damage(int points) {
-        healthPoints -= points;
-    }
+    // * STEP 3: This damage will be called by the concrete component (CharacterBase)
+    public void damage(int points);
 
     /**
      * This character attacks the given victim, causing them damage according to
@@ -65,17 +49,15 @@ public abstract class Character {
      */
     public abstract boolean canMove(int dx, int dy);
 
-    public String toString() {
-        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
-    }
-
     /**
      * Attempts to make a move to a square in the game, given all of the characters
      * If it is an invalid move, returns INVALID.
      * If it is a valid move but the square is occupied, attacks the character and returns ATTACK
      * If it is a valid move and the square is free, returns SUCCESS
      */
-    public MoveResult makeMove(int x, int y, List<Character> characters) {
+    // Interfaces can contain default methods when you want to implement a method that has the same implementation across all classes
+    // The classes that implement the Character interface do not need to override the method for makeMove() unless they want to change the implementation
+    public default MoveResult makeMove(int x, int y, List<Character> characters) {
         if (!canMove(getX() - x, getY() - y)) {
             return MoveResult.INVALID;
         }
