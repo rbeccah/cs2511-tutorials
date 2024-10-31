@@ -7,7 +7,7 @@ package thrones;
  * @author Robert Clifton-Everest
  *
  */
-public class Dragon extends Character {
+public class Dragon extends CharacterBase {
 
     public Dragon(int x, int y) {
         super(x, y);

@@ -18,25 +18,25 @@ public abstract class EntityFactory {
     public static Character createKing() {
         int x = getRandomCoordinate(), y = getRandomCoordinate();
         System.out.printf("King created at (%d, %d)\n", x, y);
-        return new King(x, y);
+        return (Character) new King(x, y);
     }
 
     public static Character createQueen() {
         int x = getRandomCoordinate(), y = getRandomCoordinate();
         System.out.printf("Queen created at (%d, %d)\n", x, y);
-        return new Queen(x, y);
+        return (Character) new Queen(x, y);
     }
 
     public static Character createKnight() {
         int x = getRandomCoordinate(), y = getRandomCoordinate();
         System.out.printf("Knight created at (%d, %d)\n", x, y);
-        return new Knight(x, y);
+        return (Character) new Knight(x, y);
     }
 
     public static Character createDragon() {
         int x = getRandomCoordinate(), y = getRandomCoordinate();
         System.out.printf("Dragon created at (%d, %d)\n", x, y);
-        return new Dragon(x, y);
+        return (Character) new Dragon(x, y);
     }
 
     // * Method 2: Making a factory class for each character

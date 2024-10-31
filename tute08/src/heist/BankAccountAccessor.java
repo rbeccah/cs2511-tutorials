@@ -9,11 +9,23 @@ public class BankAccountAccessor {
     
     private BankAccount account;
 
-    public BankAccountAccessor(BankAccount account) {
+    private static BankAccountAccessor instance;
+
+    private BankAccountAccessor(BankAccount account) {
         this.account = account;
     }
 
-    public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
+    // ? Why can synchronized be bad? 
+    // Decrease efficinecy of program in favour for reducing race conditions
+    // * synchronized: allows only one thread to access this piece of code at one time
+    public synchronized static BankAccountAccessor getInstance(BankAccount account) {
+        if (instance == null) {
+            instance = new BankAccountAccessor(account);
+        }
+        return instance;
+    }
+
+    public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");
 
         for (int i = 0; i < numberOfWithdrawals; i++) {
