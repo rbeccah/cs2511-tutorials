@@ -8,12 +8,25 @@ package heist;
 public class BankAccountAccessor {
     
     private BankAccount account;
+    private static BankAccountAccessor instance;
 
-    public BankAccountAccessor(BankAccount account) {
+    // Constructor is private to prevent other classes from using the new operator
+    private BankAccountAccessor(BankAccount account) {
         this.account = account;
     }
 
-    public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
+    // * synchronized: only one thread can access this piece of code at any one time
+    // ! In some cases, we don't always want to use the synchronized keyword. Why? 
+    // Lost the benefit of using multiple threads at one time which can slow down the program
+    public synchronized static BankAccountAccessor getInstance(BankAccount account) {
+        // Case where we haven't created our single instance
+        if (instance == null) {
+            instance = new BankAccountAccessor(account);
+        }
+        return instance;
+    }
+
+    public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");
 
         for (int i = 0; i < numberOfWithdrawals; i++) {
