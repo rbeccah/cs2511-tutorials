@@ -1,51 +1,49 @@
 package beverage;
 
-public class Beverage {
-    public void prepareBeverage() {
+public abstract class Beverage {
+    public final void prepareBeverage() {
         beverageString();
         boilWater();
         brew();
         pourInCup();
-        addCondiment();
+        addCondiments();
 
-        // * Hook method: Do nothing by default and can be redefined by subclasses if necessary
+        // * Hook Method: Do nothing by default and can be redefined by subclasses if necessary
+        // Gives subclasses the choice to "hook into" the algorithm or ignore it
         if (hasStraw()) {
             addStraw();
         }
     }
 
-    public void prepareCoffee() {
-        System.out.println("------- Preparing Coffee -------");
+    // Common steps
+    private void boilWater() {
         System.out.println("Boiling water");
-        System.out.println("Brewing: Dripping coffee through filter");
-        System.out.println("Pouring into cup");
-        System.out.println("Adding condiments: Sugar and milk");
     }
 
-    public void prepareMilktea() {
-        System.out.println("------- Preparing Milk Tea -------");
-        System.out.println("Boiling water");
-        System.out.println("Brewing: Steeping tea and cooking boba");
+    private void pourInCup() {
         System.out.println("Pouring into cup");
-        System.out.println("Adding condiments: Milk and boba pearls");
+    }
+
+    public boolean hasStraw() {
+        return false;
+    }
+
+    public void addStraw() {
         System.out.println("Adding straw to beverage");
     }
 
-    public void prepareMatcha() {
-        System.out.println("------- Preparing Matcha -------");
-        System.out.println("Boiling water");
-        System.out.println("Brewing: Steeping matcha");
-        System.out.println("Pouring into cup");
-        System.out.println("Adding condiments: Honey");
-    }
+    // Abstract steps to be implemented by subclasses
+    public abstract void brew();
+    public abstract void addCondiments();
+    public abstract void beverageString();
 
     public static void main(String[] args) {
-        Beverage coffee = new Beverage();
-        coffee.prepareCoffee();
+        Coffee coffee = new Coffee();
+        coffee.prepareBeverage();
 
         System.out.println();
 
-        Beverage milkTea = new Beverage();
-        milkTea.prepareMilktea();
+        MilkTea milkTea = new MilkTea();
+        milkTea.prepareBeverage();
     }
 }

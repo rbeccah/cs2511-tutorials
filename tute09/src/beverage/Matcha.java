@@ -14,7 +14,9 @@ public class Matcha extends Beverage {
 
     @Override
     public void beverageString() {
-        System.out.println("------- Preparing Matcha -------");
+        System.out.println("------- Preparing Milk Tea -------");
     }
+
+    
     
 }
