@@ -4,7 +4,8 @@ public class Rectangle extends Shape {
     public int height;
     public int width;
 
-    // ? Rectangle has 2 constructors. Why? 
+    // ? Rectangle has 2 constructors. Why?
+    // We can create a Rectangle using different input parameters depending on what the user wants
     public Rectangle(String color) {
         super(color);
         System.out.println("Inside Rectangle constructor with one argument");
