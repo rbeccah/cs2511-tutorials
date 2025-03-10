@@ -1,6 +1,8 @@
 package lod;
 
 public class B {
+    // * A is in the attributes of B
+    // * B is a friend to A
     
     private A a;
 
