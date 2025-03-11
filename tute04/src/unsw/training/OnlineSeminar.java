@@ -8,7 +8,13 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public class OnlineSeminar extends Seminar {
+public class OnlineSeminar {
+    /*
+     * Seminar is defined as having a list of live attendees, but OnlineSeminar does not require this
+     * You cannot book an OnlineSeminar
+     * This OnlineSeminar does not really behave like the superclass Seminar
+     * This violates LSP 
+     */
     private String videoURL;
 
     private List<String> watched;

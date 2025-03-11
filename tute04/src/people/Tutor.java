@@ -4,18 +4,8 @@ public class Tutor extends Person {
     private int payRate;
 
     public Tutor(String name, int age, int payRate) {
-        super(name, age, "LVL0");
+        super(name, age);
         this.payRate = payRate;
-    }
-
-    @Override
-    public int getSalary() {
-        return 0;
-    }
-
-    @Override
-    public void setSalary(String payRate) {
-        return;
     }
 
     public int getPayRate() {

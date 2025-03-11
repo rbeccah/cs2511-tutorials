@@ -2,16 +2,10 @@ package people;
 
 public class Student extends Person {
     public Student(String name, int age) {
-        super(name, age, "LVL0");
+        super(name, age);
     }
 
-    @Override
-    public int getSalary() {
-        return 0;
-    }
-
-    @Override
-    public void setSalary(String payRate) {
-        return;
-    }
+    // ? getSalary and setSalary are basically doing nothing
+    // A Student doesn't actually have a Salary so these functions don't really apply
+    // Refused bequest -> code smell
 }

@@ -2,6 +2,7 @@ package lod;
 
 public class B {
     
+    // * Class B has an attribute of type A. So A is a friend to B. 
     private A a;
 
     public B(A a) {
