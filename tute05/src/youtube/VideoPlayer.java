@@ -10,6 +10,8 @@ public class VideoPlayer {
         this.nextVideo = nextVideo;
     }
 
+    /* Insert State pattern functions here */
+
     public Video getVideo() {
         return video;
     }
