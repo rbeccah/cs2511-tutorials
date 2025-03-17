@@ -1,9 +1,14 @@
 package youtube;
 
+import youtube.state.ViewingState;
+import youtube.state.ReadyState;
+
 public class VideoPlayer {
     private Video video;    // Current video playing
     private Video nextVideo;    // Next video in queue
     private boolean isPlaying = false;
+
+    private ViewingState state = new ReadyState(this);
 
     public VideoPlayer(Video video, Video nextVideo) {
         this.video = video;
@@ -11,6 +16,21 @@ public class VideoPlayer {
     }
 
     /* Insert State pattern functions here */
+    public void lock() {
+        state.onLock();
+    }
+
+    public void play() {
+        state.onPlay();
+    }
+
+    public void next() {
+        state.onNext();
+    }
+
+    public void changeState(ViewingState state) {
+        this.state = state;
+    }
 
     public Video getVideo() {
         return video;
@@ -40,16 +60,16 @@ public class VideoPlayer {
     }
 
     public static void main(String[] args) {
-        // Producer ashesh = new Producer("Ashesh");
-        // Video v1 = new Video("Video 1", 60, ashesh);
-        // Video v2 = new Video("Video 2", 120, ashesh);
+        Producer ashesh = new Producer("Ashesh");
+        Video v1 = new Video("Video 1", 60, ashesh);
+        Video v2 = new Video("Video 2", 120, ashesh);
 
-        // VideoPlayer player = new VideoPlayer(v1, v2);
-        // player.play();      // Start playing video 1
-        // player.play();      // Pause video 1
-        // player.next();      // Play video 2
-        // player.lock();      // Lock playing video
-        // player.lock();      // Unlock playing video
+        VideoPlayer player = new VideoPlayer(v1, v2);
+        player.play();      // Start playing video 1
+        player.play();      // Pause video 1
+        player.next();      // Play video 2
+        player.lock();      // Lock playing video
+        player.lock();      // Unlock playing video
     }
 
 }
