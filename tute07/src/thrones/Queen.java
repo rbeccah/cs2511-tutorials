@@ -8,7 +8,10 @@ package thrones;
  * @author Robert Clifton-Everest
  *
  */
-public class Queen extends Character {
+/*
+ * Concrete component subclasses
+ */
+public class Queen extends CharacterBase {
 
     public Queen(int x, int y) {
         super(x, y);
