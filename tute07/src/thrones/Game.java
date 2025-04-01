@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import thrones.decorator.ChainMail;
+import thrones.decorator.Helmet;
+
 public class Game {
     private List<Character> characters = new ArrayList<Character>();
 
@@ -38,13 +41,20 @@ public class Game {
 
 
     public static void main(String[] args) {
-        // TODO: Replace constructors below with Factory Pattern
+        // Replace constructors below with factory pattern
+        // Right now, the user is deciding the positions of the characters upon instantiation. 
+        // We want to change it so characters are randomly assigned their position
         Game game = new Game();
-        game.addCharacter(new King(0, 0));
-        game.addCharacter(new Dragon(0, 1));
-        game.addCharacter(new Queen(2, 2));
-        game.play();
+        
+        Character king = EntityFactory.createKing();
+        Character knight = EntityFactory.createKnight();
+        Character queen = EntityFactory.createQueen();
+        Character troll = EntityFactory.createDragon();
 
-        // TODO: Construct 1 Queen wearing Helmet and Chainmail using the Decorator Pattern
+        // TODO: Construct 1 Queen wearing Helmet and Chainmail
+        Character helmetedQueen = new Helmet(queen);
+        Character helmetedChainMailQueen = new ChainMail(helmetedQueen);
+
+        game.play();
     }
 }
