@@ -22,4 +22,10 @@ public class Keyboard implements ComputerComponent {
         return name;
     }
 
+    @Override
+    public void accept(ComputerVisitor visitor) {
+        // Include the object/element itself as a parameter for visit()
+        visitor.visit(this);
+    }
+
 }
