@@ -1,38 +1,49 @@
 package beverage;
 
 public abstract class Beverage {
-    public void prepareCoffee() {
-        System.out.println("------- Preparing Coffee -------");
-        System.out.println("Boiling water");
-        System.out.println("Brewing: Dripping coffee through filter");
-        System.out.println("Pouring into cup");
-        System.out.println("Adding condiments: Sugar and milk");
+    public final void prepareBeverage() {
+        beverageString();
+        boilWater();
+        brew();
+        pourInCup();
+        addCondiments();
+
+        // * Hook method: 
+        // Gives subclasses the choice to "hook into" a particular step
+        if (hasStraw()) {
+            addStraw();
+        }
     }
 
-    public void prepareMatcha() {
-        System.out.println("------- Preparing Matcha -------");
+    // Common steps
+    private void boilWater() {
         System.out.println("Boiling water");
-        System.out.println("Brewing: Steeping matcha");
-        System.out.println("Pouring into cup");
-        System.out.println("Adding condiments: Honey");
     }
 
-    public void prepareMilktea() {
-        System.out.println("------- Preparing Milk Tea -------");
-        System.out.println("Boiling water");
-        System.out.println("Brewing: Steeping tea and cooking boba");
+    private void pourInCup() {
         System.out.println("Pouring into cup");
-        System.out.println("Adding milk and boba pearls");
+    }
+
+    public boolean hasStraw() {
+        return false;
+    }
+
+    public void addStraw() {
         System.out.println("Adding straw to beverage");
     }
 
+    // Abstract steps to be implemented by subclasses
+    public abstract void brew();
+    public abstract void addCondiments();
+    public abstract void beverageString();
+
     public static void main(String[] args) {
         Beverage coffee = new Coffee();
-        coffee.prepareCoffee();
+        coffee.prepareBeverage();
 
         System.out.println();
 
         Beverage milkTea = new MilkTea();
-        milkTea.prepareMilktea();
+        milkTea.prepareBeverage();
     }
 }

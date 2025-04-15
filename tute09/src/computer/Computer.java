@@ -1,5 +1,6 @@
 package computer;
 
+// * Concrete element
 public class Computer implements ComputerComponent {
 
     private String name;
@@ -17,6 +18,15 @@ public class Computer implements ComputerComponent {
 
     public int getMemory() {
         return memory;
+    }
+
+    @Override
+    public void accept(ComputerVisitor visitor) {
+        if (visitor.checkValidated()) {
+            visitor.visit(this);
+        } else {
+            System.out.println("User is not validated to visit Computer");
+        }
     }
     
 

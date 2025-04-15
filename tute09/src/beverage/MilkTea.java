@@ -16,5 +16,10 @@ public class MilkTea extends Beverage {
     public void beverageString() {
         System.out.println("------- Preparing Milk Tea -------");
     }
+
+    @Override
+    public boolean hasStraw() {
+        return true;
+    }
     
 }
