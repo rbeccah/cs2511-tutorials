@@ -2,24 +2,27 @@ package example;
 
 import java.util.Scanner;
 
-// Our own custom class
 public class Sum {
     public static void main(String[] args) {
-        // ? What is the difference between Scanner and scanner
-        // Instances are different to the class itself
-        // we created a new instance of the class scanner
+        // Scanner - class / type of the variable
+        // scanner - variable name
+        // Calling the constructor of Scanner
+        // Creating an instance of class Scanner
+        // classes vs instances
         Scanner scanner = new Scanner(System.in);
 
+        // "1 2 3 4 5"
+        // ["1", "2", "3", ...]
         String[] numbers = scanner.nextLine().split(" ");
 
-        int sum = 0;    // float, double
+        int sum = 0;
+        // for number in numbers (Python)
         for(String number : numbers) {
+            // parseInt() is static
             int val = Integer.parseInt(number);
             sum += val;
         }
-
         System.out.println("Sum: " + sum);
-
         scanner.close();
     }
 }

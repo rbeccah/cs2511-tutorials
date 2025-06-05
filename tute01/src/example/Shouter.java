@@ -1,29 +1,30 @@
 package example;
 
 public class Shouter {
-    // Attributes
-    // ? What is this private? 
-    // Access modifier
+    // Attribute
+    // access modifier - controls the access of certain methods and attributes
+    // security, abstraction
+    // public, private, protected, default
     private String message;
 
     // Constructor
     public Shouter(String message) {
-        // ? this.message - Shouter's message attribute
-        // ? message - the input to the constructor
+        // this.message - this class' attribute called message
+        // message - input from the constructor
         this.message = message;
     }
 
     // Getter
     public String getMessage() {
-        return this.message;
+        return message;
     }
 
     // Setter
-    public void setMessage(String new_message) {
-        this.message = new_message;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    // Method
+    // Methods
     public void shout() {
         System.out.println(message.toUpperCase() + "!");
     }
@@ -31,11 +32,10 @@ public class Shouter {
     public static void main(String[] args) {
         Shouter shouter = new Shouter("i love comp2511");
         shouter.shout();
-
-        shouter.setMessage("hello this is our first tutorial");
+        shouter.setMessage("changing to a new message");
         shouter.shout();
 
-        Shouter shouter2 = new Shouter("i am another shouter");
+        Shouter shouter2 = new Shouter("another shouter");
         shouter2.shout();
     }
 }
