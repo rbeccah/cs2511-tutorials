@@ -1,10 +1,28 @@
 package shapes;
 
-public class Shape {
-    public String color;
+public abstract class Shape {
+    private String colour;
 
-    public Shape(String color) {
+    private static int count = 0;
+
+    public Shape(String colour) {
         System.out.println("Inside Shape constructor");
-        this.color = color;
+        this.colour = colour;
+        count++;
     }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public abstract int getArea();
+
 }
