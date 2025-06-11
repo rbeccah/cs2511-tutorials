@@ -15,6 +15,7 @@ public class Square extends Rectangle {
         System.out.println("Inside Square constructor with three arguments");
     }
 
+    @Override
     public int getArea() {
         return length * length;
     }
