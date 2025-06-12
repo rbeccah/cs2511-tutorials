@@ -5,6 +5,8 @@ public class Rectangle extends Shape {
     public int width;
 
     // ? Rectangle has 2 constructors. Why? 
+    // Somtimes we want to define all attributes of a class, but other times it would be more convenient to define only some of the attributes
+    // Method overloading
     public Rectangle(String color) {
         super(color);
         this.width = 1;
@@ -26,13 +28,14 @@ public class Rectangle extends Shape {
 
     public static void main(String[] args) {
         // ? How does the program know which constructor we are calling? 
+        // Through method overlaoding, it is able to identify the correct constructor by the input parameters, number and type
         Rectangle r = new Rectangle("red", 10, 20); // What will this print?
         Rectangle r2 = new Square("blue", 20);
         System.out.println();
         
         System.out.println("Area of r2: " + r2.getArea());
 
-        // ? What will this print out? 
+        // ? What will this print out?
         System.out.println("Number of shapes: " + Shape.getCount());
     }
 }

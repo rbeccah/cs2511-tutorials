@@ -3,6 +3,7 @@ package shapes;
 public abstract class Shape {
     private String colour;
 
+    // static - belongs to the class rather than any single instance
     private static int count = 0;
 
     public Shape(String colour) {

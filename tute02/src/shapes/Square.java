@@ -18,4 +18,8 @@ public class Square extends Rectangle {
     public int getArea() {
         return length * length;
     }
+
+    public void test() {
+        System.out.println("hello");
+    }
 }
