@@ -1,10 +1,10 @@
 package dogs;
 
-public class Greyhound implements Dog {
+public class Greyhound extends Dog {
     private int speed;
 
     public Greyhound(String colour) {
-        this.colour = colour;
+        super(colour);
     }
 
     public int getSpeed() {
