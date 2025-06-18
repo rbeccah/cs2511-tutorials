@@ -1,21 +1,21 @@
 package people;
 
+import java.util.Map;
+
 public class Tutor extends Person {
+    // Tutor has payrate
     private int payRate;
 
+    public static final Map<String, Integer> PAY_RATES = Map.of(
+        "LVL0", 0,
+        "LVL1", 1000,
+        "LVL2", 2000,
+        "LVL3", 3000
+    );
+
     public Tutor(String name, int age, int payRate) {
-        super(name, age, "LVL0");
+        super(name, age);
         this.payRate = payRate;
-    }
-
-    @Override
-    public int getSalary() {
-        return 0;
-    }
-
-    @Override
-    public void setSalary(String payRate) {
-        return;
     }
 
     public int getPayRate() {
