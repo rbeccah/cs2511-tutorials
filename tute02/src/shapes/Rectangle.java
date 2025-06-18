@@ -27,6 +27,7 @@ public class Rectangle extends Shape {
     }
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         // ? How does the program know which constructor we are calling?
         // Method overloading, based on the number parameters and the type
         // ? What will this print? 
@@ -36,6 +37,15 @@ public class Rectangle extends Shape {
         System.out.println(r2.getClass());
 
         System.out.println("Area of r2: " + r2.getArea());
+=======
+        // ? How does the program know which constructor we are calling? 
+        Rectangle r = new Rectangle("red", 10, 20); // What will this print?
+        Rectangle r2 = new Square("blue", 20);
+        System.out.println();
+        
+        System.out.println("Area of r2: " + r2.getArea());
+
+>>>>>>> main
         // ? What will this print out? 
         System.out.println("Number of shapes: " + Shape.getCount());
     }

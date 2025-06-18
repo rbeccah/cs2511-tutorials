@@ -5,6 +5,7 @@ public class Student extends Person {
         super(name, age, "LVL0");
     }
 
+    // ? This getSalary() and setSalary() are not doing anything? 
     @Override
     public int getSalary() {
         return 0;
