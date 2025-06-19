@@ -2,17 +2,12 @@ package people;
 
 public class Student extends Person {
     public Student(String name, int age) {
-        super(name, age, "LVL0");
+        super(name, age);
     }
 
     // ? This getSalary() and setSalary() are not doing anything? 
-    @Override
-    public int getSalary() {
-        return 0;
-    }
-
-    @Override
-    public void setSalary(String payRate) {
-        return;
-    }
+    // getSalary and setSaalry essentially are doing nothing, in other words Student doesn't have a salary
+    // This is where Student (sublss) is not behaving like Person (superclass)
+    // Violates LSP
+    // Code smell called refused bequest
 }
