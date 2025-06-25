@@ -20,4 +20,14 @@ public class Seminar {
     public List<String> getAttendees() {
         return attendees;
     }
+
+    public LocalDate book(String employee, List<LocalDate> availability) {
+        for (LocalDate available : availability) {
+            if (getStart().equals(available) && getAttendees().size() < 10) {
+                getAttendees().add(employee);
+                return available;
+            }
+        }
+        return null;
+    }
 }

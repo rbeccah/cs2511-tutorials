@@ -8,7 +8,13 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public class OnlineSeminar extends Seminar {
+public class OnlineSeminar {
+    /*
+     * Seminar is defined as having  a list of attendees and also booking and has a time, but the OnlineSeminar does not have any of this
+     * OnlineSeminar is not behaving like the Seminar class
+     * Violates LSP
+     * Example where the inheritance relationship itself is invalid
+     */
     private String videoURL;
 
     private List<String> watched;

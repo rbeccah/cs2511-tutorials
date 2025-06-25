@@ -2,6 +2,9 @@ package lod;
 
 public class B {
     
+    // * B "HAS-A" A
+    // A is an attribute of B, so A is a friend to B
+    // We can access the methods in A
     private A a;
 
     public B(A a) {
