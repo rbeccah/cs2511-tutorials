@@ -30,10 +30,31 @@ public class CalculatorTest {
         assertEquals(12, e.compute());
     }
 
+    @Test
+    public void testDivisionInvalid() {
+        assertThrows(ArithmeticException.class, () -> {
+            Expression e = new Division(new Number(1), new Number(0));
+            e.compute();
+        });
+    }
+
     // Integration testing - Different units of the software application are being tested 
     // as a combined entity
     @Test
     public void testIntegration() {
         // ((1 + 2) - ((3 / 4) * 5))
+        // = 3 - (0.75 * 5)
+        // = 3 - 3.75
+        // = -0.75
+
+        Calculator calculator = new Calculator(
+            new Subtraction(
+                new Addition(new Number(1), new Number(2)), 
+                new Multiplication(
+                    new Division(new Number(3), new Number(4)), 
+                    new Number(5)))
+        );
+
+        assertEquals(-0.75, calculator.compute());
     }
 }
