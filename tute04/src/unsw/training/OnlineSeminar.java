@@ -1,5 +1,6 @@
 package unsw.training;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -8,8 +9,21 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public class OnlineSeminar extends Seminar {
+public class OnlineSeminar {
+    /*
+     * Seminar is defined as having a time and also the ability to book the seminar. But OnlineSemianr does not reqquire any of this
+     * 
+     * Therefore, OnlineSeminar is not behaving like my Seminar superclass
+     * Violate LSP
+     * 
+     */
     private String videoURL;
 
     private List<String> watched;
+
+    // refused bequest
+    // @Override
+    // public LocalDate book(String employee, List<LocalDate> availability) {
+    //     return null;
+    // }
 }
