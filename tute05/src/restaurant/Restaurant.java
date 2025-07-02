@@ -6,9 +6,13 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import restaurant.strategy.ChargingStrategy;
+import restaurant.strategy.StandardStrategy;
+
 public class Restaurant {
 
-    private String chargingStrategy = "standard";
+    // Restaurant doesn't know the specific contents of a strategy but uses the strategy the same way regardless
+    private ChargingStrategy chargingStrategy = new StandardStrategy();
     private String name;
     private List<Meal> menu = new ArrayList<Meal>();
     private List<String> members = new ArrayList<String>();
@@ -24,42 +28,27 @@ public class Restaurant {
     }
 
     // ? How does this switch statement break the open-closed principle? 
+    // * Open-Closed Principle: a class should be closed for modification but open for extension
+    // When we need to add a new pay rate, we have to modify cost() and displayMenu() function each time
 
     // ? Why does the new implementation not violate the open-closed principle? 
+    // Adding a new strategy, it does not involve modifying any of the existing classes
+    // Instead, we simply add a new class that implements ChargingStrategy
     public double cost(List<Meal> order, String payee) {
-        switch (chargingStrategy) {
-            case "standard":
-                return order.stream().mapToDouble(meal -> meal.getCost()).sum();
-            case "holiday":
-                return order.stream().mapToDouble(meal -> meal.getCost() * 1.15).sum();
-            case "happyHour":
-                if (members.contains(payee)) {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.6).sum();
-                } else {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.7).sum();
-                }
-            case "discount":
-                if (members.contains(payee)) {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.85).sum();
-                } else {
-                    return order.stream().mapToDouble(meal -> meal.getCost()).sum();
-                }
-            default: return 0;
-        }
+        return chargingStrategy.cost(order, members.contains(payee));
     }
 
     public void displayMenu() {
-        double modifier = 0;
-        switch (chargingStrategy) {
-            case "standard": modifier = 1; break;
-            case "holiday": modifier = 1.15; break;
-            case "happyHour": modifier = 0.7; break;
-            case "discount": modifier = 1; break;
-        }
+        double modifier = chargingStrategy.costMultiplier();
         
         for (Meal meal : menu) {
             System.out.println(meal.getName() + " - " + meal.getCost() * modifier);
         }
+    }
+
+    // Makes the strategies interchangeable at runtime
+    public void changeStrategy(ChargingStrategy newStrategy) {
+        this.chargingStrategy = newStrategy;
     }
 
     public static void main(String[] args) {
