@@ -12,5 +12,13 @@ public class Youtube {
         Producer ashesh = new Producer("Ashesh");
         User amanda = new User("Amanda");
         User alvin = new User("Alvin");
+
+        ashesh.registerSubscriber(alvin);
+        ashesh.removeSubscriber(amanda);
+
+        Video video = new Video("COMP2511 Lecture 1", 100, ashesh);
+
+        // Subject broadcasting
+        ashesh.notifySubscribers(video);
     }
 }
