@@ -6,9 +6,14 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import restaurant.strategy.ChargingStrategy;
+import restaurant.strategy.HolidayStrategy;
+import restaurant.strategy.StandardStrategy;
+
 public class Restaurant {
 
-    private String chargingStrategy = "standard";
+    // Restaurant does not need to know the specific concrete class at compile time of a strategy but use the strategy the same way regardless
+    private ChargingStrategy chargingStrategy = new StandardStrategy();
     private String name;
     private List<Meal> menu = new ArrayList<Meal>();
     private List<String> members = new ArrayList<String>();
@@ -24,38 +29,21 @@ public class Restaurant {
     }
 
     // ? How does this switch statement break the open-closed principle? 
+    // * OCP: a class should be closed for modification but open for extension 
+    // Here we need to add a new switch statement everytime we want to add a new charging strategy
 
     // ? Why does the new implementation not violate the open-closed principle? 
     public double cost(List<Meal> order, String payee) {
-        switch (chargingStrategy) {
-            case "standard":
-                return order.stream().mapToDouble(meal -> meal.getCost()).sum();
-            case "holiday":
-                return order.stream().mapToDouble(meal -> meal.getCost() * 1.15).sum();
-            case "happyHour":
-                if (members.contains(payee)) {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.6).sum();
-                } else {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.7).sum();
-                }
-            case "discount":
-                if (members.contains(payee)) {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.85).sum();
-                } else {
-                    return order.stream().mapToDouble(meal -> meal.getCost()).sum();
-                }
-            default: return 0;
-        }
+        return chargingStrategy.cost(order, members.contains(payee));
+    }
+
+    // This is how the strategies can be interchangeable at runtime
+    public void changeStrategy(ChargingStrategy newStrategy) {
+        this.chargingStrategy = newStrategy;
     }
 
     public void displayMenu() {
-        double modifier = 0;
-        switch (chargingStrategy) {
-            case "standard": modifier = 1; break;
-            case "holiday": modifier = 1.15; break;
-            case "happyHour": modifier = 0.7; break;
-            case "discount": modifier = 1; break;
-        }
+        double modifier = chargingStrategy.costModifier();
         
         for (Meal meal : menu) {
             System.out.println(meal.getName() + " - " + meal.getCost() * modifier);
@@ -64,6 +52,10 @@ public class Restaurant {
 
     public static void main(String[] args) {
         Restaurant r = new Restaurant("XS");
+        r.displayMenu();
+        System.out.println();
+
+        r.changeStrategy(new HolidayStrategy());
         r.displayMenu();
     }
 
