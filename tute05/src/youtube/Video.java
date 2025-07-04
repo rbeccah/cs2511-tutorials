@@ -34,5 +34,4 @@ public class Video {
     public void setProducer(Producer producer) {
         this.producer = producer;
     }
-
 }

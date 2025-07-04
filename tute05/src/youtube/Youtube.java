@@ -13,12 +13,13 @@ public class Youtube {
         User amanda = new User("Amanda");
         User alvin = new User("Alvin");
 
+        // We add Amanda and Alvin as subscribers to Ashesh
+        ashesh.registerSubscriber(amanda);
         ashesh.registerSubscriber(alvin);
-        ashesh.removeSubscriber(amanda);
 
         Video video = new Video("COMP2511 Lecture 1", 100, ashesh);
 
-        // Subject broadcasting
+        // Subject broadcasting a video to its subscribers
         ashesh.notifySubscribers(video);
     }
 }
