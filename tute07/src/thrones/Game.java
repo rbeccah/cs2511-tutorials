@@ -10,6 +10,11 @@ import thrones.characters.Queen;
 import thrones.characters.metal.MetalDragon;
 import thrones.characters.plastic.PlasticQueen;
 import thrones.characters.wood.WoodKing;
+import thrones.decorators.ChainMailDecorator;
+import thrones.factories.CharacterFactory;
+import thrones.factories.MetalFactory;
+import thrones.factories.PlasticFactory;
+import thrones.factories.WoodFactory;
 
 /**
  * Plays the game with a command line interface.
@@ -19,6 +24,7 @@ import thrones.characters.wood.WoodKing;
 public class Game {
     private List<Character> characters = new ArrayList<Character>();
     private int dimension;
+    // CharacterFactory
 
     public Game(int dimension) {
         this.dimension = dimension;
@@ -60,15 +66,19 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game(10);
 
-        King k = new WoodKing(0, 0);
+        CharacterFactory metalCharacterFactory = new MetalFactory(game.getDimension());
+        CharacterFactory woodCharacterFactory = new WoodFactory(game.getDimension(), 2);
+        CharacterFactory plastiCharacterFactory = new PlasticFactory(game.getDimension(), 2);
+
+        King k = woodCharacterFactory.createKing();
         game.addCharacter(k);
 
-        Dragon d = new MetalDragon(0, 1);
+        Dragon d = metalCharacterFactory.createDragon();
         // Wrap the chain mail around the dragon
-        // ChainMailDecorator cm = new ChainMailDecorator(d);
-        // game.addCharacter(cm);
+        ChainMailDecorator cm = new ChainMailDecorator(d);
+        game.addCharacter(cm);
 
-        Queen q = new PlasticQueen(2, 2);
+        Queen q = plastiCharacterFactory.createQueen();
         game.addCharacter(q);
 
         game.play();
