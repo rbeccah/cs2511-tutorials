@@ -1,14 +1,14 @@
-package thrones;
+package thrones.characters;
+
+import thrones.Character;
 
 /**
  * A knight can move like a knight in chess (in an L shape), and has a 1 in 2
  * chance of inflicting 10 points of damage when attacking.
- *
+ * 
  * @author Robert Clifton-Everest
- *
  */
-public class Knight extends Character {
-
+public abstract class Knight extends CharacterBase {
     public Knight(int x, int y) {
         super(x, y);
     }
@@ -25,5 +25,4 @@ public class Knight extends Character {
         dy = Math.abs(dy);
         return (dx == 1 && dy == 2 || dx == 2 && dy == 1);
     }
-
 }

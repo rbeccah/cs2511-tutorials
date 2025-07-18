@@ -4,8 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import thrones.characters.Dragon;
+import thrones.characters.King;
+import thrones.characters.Queen;
+import thrones.characters.metal.MetalDragon;
+import thrones.characters.plastic.PlasticQueen;
+import thrones.characters.wood.WoodKing;
+
+/**
+ * Plays the game with a command line interface.
+ * 
+ * @author Nick Patrikeos
+ */
 public class Game {
     private List<Character> characters = new ArrayList<Character>();
+    private int dimension;
+
+    public Game(int dimension) {
+        this.dimension = dimension;
+    }
 
     public void play() {
         Scanner scanner = new Scanner(System.in);
@@ -36,15 +53,24 @@ public class Game {
         characters.add(character);
     }
 
+    public int getDimension() {
+        return dimension;
+    }
 
     public static void main(String[] args) {
-        // TODO: Replace constructors below with Factory Pattern
-        Game game = new Game();
-        game.addCharacter(new King(0, 0));
-        game.addCharacter(new Dragon(0, 1));
-        game.addCharacter(new Queen(2, 2));
-        game.play();
+        Game game = new Game(10);
 
-        // TODO: Construct 1 Queen wearing Helmet and Chainmail using the Decorator Pattern
+        King k = new WoodKing(0, 0);
+        game.addCharacter(k);
+
+        Dragon d = new MetalDragon(0, 1);
+        // Wrap the chain mail around the dragon
+        // ChainMailDecorator cm = new ChainMailDecorator(d);
+        // game.addCharacter(cm);
+
+        Queen q = new PlasticQueen(2, 2);
+        game.addCharacter(q);
+
+        game.play();
     }
 }
