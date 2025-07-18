@@ -5,15 +5,27 @@ package heist;
  * 
  * @author Nick Patrikeos + @your name
  */
+// * This is our singleton instance
 public class BankAccountAccessor {
     
     private BankAccount account;
 
-    public BankAccountAccessor(BankAccount account) {
+    private static BankAccountAccessor instance;
+
+    private BankAccountAccessor(BankAccount account) {
         this.account = account;
     }
 
-    public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
+    // * synchronized: only one thread can access this piece of code at any one time
+    // locks, mutexes
+    public synchronized static BankAccountAccessor getInstance(BankAccount account) {
+        if (instance == null) {
+            instance = new BankAccountAccessor(account);
+        }
+        return instance;
+    }
+
+    public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");
 
         for (int i = 0; i < numberOfWithdrawals; i++) {

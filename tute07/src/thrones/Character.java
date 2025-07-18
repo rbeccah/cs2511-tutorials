@@ -2,6 +2,7 @@ package thrones;
 
 import java.util.List;
 
+// * Common component that both my wrappee and wrappers (decorator) will implement
 public interface Character {
     public int getHealthPoints();
 

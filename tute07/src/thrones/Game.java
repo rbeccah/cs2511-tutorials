@@ -10,6 +10,9 @@ import thrones.characters.Queen;
 import thrones.characters.metal.MetalDragon;
 import thrones.characters.plastic.PlasticQueen;
 import thrones.characters.wood.WoodKing;
+import thrones.decorators.ChainMailDecorator;
+import thrones.decorators.ChestPlateDecorator;
+import thrones.factories.*;
 
 /**
  * Plays the game with a command line interface.
@@ -60,13 +63,19 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game(10);
 
-        King k = new WoodKing(0, 0);
+        // Create all of my factories
+        MetalFactory metalFactory = new MetalFactory(game.getDimension());
+        PlasticFactory plasticFactory = new PlasticFactory(game.getDimension(), 3);
+        WoodFactory woodFactory = new WoodFactory(game.getDimension(), 2);
+
+        King k = woodFactory.createKing();
         game.addCharacter(k);
 
         Dragon d = new MetalDragon(0, 1);
         // Wrap the chain mail around the dragon
-        // ChainMailDecorator cm = new ChainMailDecorator(d);
-        // game.addCharacter(cm);
+        ChainMailDecorator cm = new ChainMailDecorator(d);
+        ChestPlateDecorator cp = new ChestPlateDecorator(cm);
+        game.addCharacter(cp);
 
         Queen q = new PlasticQueen(2, 2);
         game.addCharacter(q);
