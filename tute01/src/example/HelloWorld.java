@@ -3,8 +3,6 @@ package example;
 /**
  * Prints "Hello World" to the console.
  *
- * @author Robert Clifton-Everest
- *
  */
 public class HelloWorld {
 
