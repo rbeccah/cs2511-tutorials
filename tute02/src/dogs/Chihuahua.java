@@ -3,15 +3,10 @@ package dogs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chihuahua implements Dog {
-    private String colour;
+public class Chihuahua extends Dog {
 
     public Chihuahua(String colour) {
-        this.colour = colour;
-    }
-
-    public String getColour() {
-        return colour;
+        super(colour);
     }
 
     @Override
@@ -26,7 +21,7 @@ public class Chihuahua implements Dog {
     public static void main(String[] args) {
         List<Object> animals = new ArrayList<>();
         animals.add(new Chihuahua("brown"));
-        animals.add(new Greyhound("grey"));
+        animals.add(new Greyhound("grey", 100));
 
         for (Object o : animals) {
             if (o instanceof Dog) {

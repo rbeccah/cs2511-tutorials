@@ -1,15 +1,11 @@
 package dogs;
 
-public class Greyhound implements Dog {
-    private String colour;
+public class Greyhound extends Dog {
     private int speed;
 
-    public Greyhound(String colour) {
-        this.colour = colour;
-    }
-
-    public String getColour() {
-        return colour;
+    public Greyhound(String colour, int speed) {
+        super(colour);
+        this.speed = speed;
     }
 
     public int getSpeed() {

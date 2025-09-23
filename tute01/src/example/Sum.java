@@ -14,11 +14,11 @@ public class Sum {
         scanner.close();
 
         int sum = 0;
-        // for (String number : numbers) {
-        //     // parseInt() is a static function
-        //     int val = Integer.parseInt(number);
-        //     sum += val;
-        // }
+        for (String number : numbers) {
+            // parseInt() is a static function
+            int val = Integer.parseInt(number);
+            sum += val;
+        }
 
         System.out.println("Sum: " + sum);
 

@@ -51,7 +51,45 @@ public class Employee {
         this.salary = salary;
     }
 
+    // * Overriding functions
+    @Override
+    public String toString() {
+        return getClass().getName() + "[name" + name + ", salary=" + salary + "]";
+    }
+
+    // ? Why does the equals take in type Object
+    // .equals() 
+    @Override
+    public boolean equals(Object obj) {
+        // Check if obj is the exact same instance, return true
+        if (this == obj) return true;
+
+        // Check if obj is null, return false
+        if (obj == null) return false;
+
+        // Check the classes
+        if (getClass() != obj.getClass()) return false;
+
+        // Once confirmed that classes are the same, we can downcast to Employee
+        Employee other = (Employee) obj;
+        // Compare the attributes inside the class
+        if (name.equals(other.name) && salary == other.salary) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        
+        Employee e1 = new Employee("Amanda", 100);
+        Employee e2 = new Employee("Amanda", 100);
+        System.out.println(e1);
+
+        // ? What this would print out? 
+        // Comparing strings in C, strcmp() to compare the contents
+        System.out.println(e1 == e2);
+        System.out.println(e1.equals(e2));
+
+        Manager m1 = new Manager("Amanda", 100);
+        System.out.println(m1.equals(e1));
     }
 }
