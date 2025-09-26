@@ -51,7 +51,49 @@ public class Employee {
         this.salary = salary;
     }
 
-    public static void main(String[] args) {
+    // * Overriding methods
+    @Override
+    public String toString() {
+        return getClass().getName() + "[name=" + name + ", " + "salary=" + salary + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // Check if obj is exact same instance
+        if (this == obj) return true;
+
+        // Check if obj is null
+        if (obj == null) return false;
+
+        // Check if objects are different classes
+        if (getClass() != obj.getClass()) return false;
+
+        // Downcast into the Employee to access the attributes
+        Employee other = (Employee) obj;
+        // Compare the attributes
+        if (name.equals(other.name) && salary == other.salary) {
+            return true;
+        }
+        return false;
+    }
+
+    // public boolean equals(Employee e) {
         
+    // }
+
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Amanda", 100);
+        Employee e2 = new Employee("Amanda", 100);
+        System.out.println(e1);
+
+        // ? Why is this false? 
+        // == compares the memory addresses
+        // In C, to compare strings I use strcmp() to actually compare the contents
+        // In Java, we use equals() to compare the contents of classes
+        System.out.println(e1 == e2);
+        System.out.println(e1.equals(e2));
+
+        Manager m1 = new Manager("Ashesh", 200);
+        System.out.println(m1);
     }
 }

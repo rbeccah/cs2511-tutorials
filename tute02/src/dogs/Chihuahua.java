@@ -3,11 +3,11 @@ package dogs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chihuahua implements Dog {
+public class Chihuahua extends Dog {
     private String colour;
 
     public Chihuahua(String colour) {
-        this.colour = colour;
+        super(colour);
     }
 
     public String getColour() {

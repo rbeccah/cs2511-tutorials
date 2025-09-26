@@ -5,9 +5,23 @@ package dogs;
 // ? What are some downsides of the use of the interface here? 
 
 // ? Is an interface the best use here? 
+// No, abstract class because Dog is a Greyhound
 
-public interface Dog {
+public abstract class Dog {
+    private String colour;
 
-    public void bark();
+    public Dog(String colour) {
+        this.colour = colour;
+    }
+
+    public abstract void bark();
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
     
 }
