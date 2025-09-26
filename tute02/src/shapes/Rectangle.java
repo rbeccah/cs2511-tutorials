@@ -24,6 +24,10 @@ public class Rectangle extends Shape {
         return height * width;
     }
 
+    public void printMessage() {
+        System.out.println("I am a Rectangle");
+    }
+
     public static void main(String[] args) {
         // ? How does the program know which constructor we are calling? 
         Rectangle r = new Rectangle("red", 10, 20); // What will this print?
