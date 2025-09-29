@@ -3,6 +3,8 @@ package people;
 import java.util.Map;
 
 public abstract class Person {
+    // ? Should Person really have salary and payrates functionality?
+    
     public static final Map<String, Integer> PAY_RATES = Map.of(
         "LVL0", 0,
         "LVL1", 1000,
