@@ -2,6 +2,8 @@ package lod;
 
 public class B {
     
+    // * Class B has A as its attributes ("HAS-A")
+    // A is a friend to B
     private A a;
 
     public B(A a) {
