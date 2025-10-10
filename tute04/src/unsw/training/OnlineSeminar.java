@@ -8,7 +8,14 @@ import java.util.List;
  * @author Robert Clifton-Everest
  *
  */
-public class OnlineSeminar extends Seminar {
+/*
+ * Seminar has inherently the idea of taking place in time
+ * A client that is interacting with Seminar would also expect OnlineSeminar to be able to be booked and take place in time
+ * 
+ * Invalid inheritance relationship
+ * Violates LSP, because the OnlineSeminar cannot be booked like a regular Seminar class
+ */
+public class OnlineSeminar {
     private String videoURL;
 
     private List<String> watched;

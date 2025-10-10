@@ -2,6 +2,8 @@ package lod;
 
 public class B {
     
+    // * HAS-A (diamond)
+    // A is a friend to B
     private A a;
 
     public B(A a) {
