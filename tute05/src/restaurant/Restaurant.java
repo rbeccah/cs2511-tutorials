@@ -27,7 +27,7 @@ public class Restaurant {
     }
 
     // ? How does this switch statement break the open-closed principle? 
-    // Switch cases are avoidable
+    // Switch cases is a code smell if it is avoidable
     // Everytime we add a new pricing setting we have to constantly modify this function
 
     // ? Why does the new implementation not violate the open-closed principle? 
