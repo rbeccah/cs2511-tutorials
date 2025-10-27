@@ -71,6 +71,7 @@ public class Game {
         Queen q = new PlasticQueen(2, 2);
         game.addCharacter(q);
 
+        // ? How do we reduce the amount of damage infliced using a decorator? 
         game.play();
     }
 }
