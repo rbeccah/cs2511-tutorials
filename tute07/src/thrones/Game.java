@@ -10,6 +10,7 @@ import thrones.characters.Queen;
 import thrones.characters.metal.MetalDragon;
 import thrones.characters.plastic.PlasticQueen;
 import thrones.characters.wood.WoodKing;
+import thrones.decorators.ChainMailDecorator;
 
 /**
  * Plays the game with a command line interface.
@@ -65,8 +66,10 @@ public class Game {
 
         Dragon d = new MetalDragon(0, 1);
         // Wrap the chain mail around the dragon
-        // ChainMailDecorator cm = new ChainMailDecorator(d);
-        // game.addCharacter(cm);
+        // * STEP 1: Game makes a character call attack() which calls damage()
+        // Since ChainMailDecorator wraps the Dragon, it will call damage() in ChainMailDecoartor first
+        ChainMailDecorator cm = new ChainMailDecorator(d);
+        game.addCharacter(cm);
 
         Queen q = new PlasticQueen(2, 2);
         game.addCharacter(q);

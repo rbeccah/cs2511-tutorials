@@ -1,5 +1,8 @@
 package overcooked;
 
+/*
+ * Main program
+ */
 public class Kitchen {
     public static void main(String[] args) {
         Oven oven = new Oven(180);
@@ -11,11 +14,13 @@ public class Kitchen {
         Chef jamie = new Chef("Jamie", 5, oven);
 
         // Tell all the chefs to start working.
+        // * Creates a new thread of execution, then automatically calls thread's run() on the new thread
         gordon.start();
         julia.start();
         jamie.start();
 
         // Here we wait for all the chefs to finish their tasks.
+        // * join() -> wait for this thread to finish continuing
         try {
             gordon.join();
             julia.join();
