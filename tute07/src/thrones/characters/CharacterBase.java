@@ -46,6 +46,7 @@ public abstract class CharacterBase implements Character {
      * 
      * @param points
      */
+    // It takes in input parameter points / 2
     public void damage(int points) {
         healthPoints -= points;
     }

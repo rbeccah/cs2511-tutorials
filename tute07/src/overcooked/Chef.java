@@ -1,5 +1,8 @@
 package overcooked;
 
+/*
+ * Thread
+ */
 // Extending the Thread class allows us to execute code in the run() method simultaneously.
 public class Chef extends Thread {
     private String name;
@@ -9,7 +12,7 @@ public class Chef extends Thread {
     public Chef(String name, int cakesNeeded, Oven oven) {
         this.name = name;
         this.cakesNeeded = cakesNeeded;
-        this.mitts = new OvenMitts(oven);
+        this.mitts = OvenMitts.getInstance(oven);
     }
 
     // This method gets called by Thread::start(). 

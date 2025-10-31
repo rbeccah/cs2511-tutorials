@@ -10,6 +10,7 @@ import thrones.characters.Queen;
 import thrones.characters.metal.MetalDragon;
 import thrones.characters.plastic.PlasticQueen;
 import thrones.characters.wood.WoodKing;
+import thrones.decorators.ChainMailDecorator;
 
 /**
  * Plays the game with a command line interface.
@@ -65,8 +66,8 @@ public class Game {
 
         Dragon d = new MetalDragon(0, 1);
         // Wrap the chain mail around the dragon
-        // ChainMailDecorator cm = new ChainMailDecorator(d);
-        // game.addCharacter(cm);
+        ChainMailDecorator chainMainDragon = new ChainMailDecorator(d);
+        game.addCharacter(chainMainDragon);
 
         Queen q = new PlasticQueen(2, 2);
         game.addCharacter(q);

@@ -1,13 +1,28 @@
 package overcooked;
 
+/* 
+ * Access point to the shared resource (Oven)
+ */
 public class OvenMitts {
     private Oven oven;
+    private static OvenMitts instance = null;
 
-    public OvenMitts(Oven oven) {
+    // Constructor is private to prevent other classes from using the new operator
+    private OvenMitts(Oven oven) {
         this.oven = oven;
     }
 
-    public void useOven(String chef, int cakesNeeded) {
+    // * synchronized: only one thread can access this piece of code at any one time
+    public static synchronized OvenMitts getInstance(Oven oven) {
+        if (instance == null) {
+            instance = new OvenMitts(oven);
+        }
+        return instance;
+    }
+
+    // ? Why might syncrhonized be bad? 
+    // Lost the benefit of using multiple threads
+    public synchronized void useOven(String chef, int cakesNeeded) {
         System.out.println(chef + " puts on the oven mitts and opens the oven...");
 
         for (int i = 0; i < cakesNeeded; i++) {

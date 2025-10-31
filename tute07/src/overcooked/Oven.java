@@ -1,5 +1,8 @@
 package overcooked;
 
+/*
+ * Shared resource
+ */
 public class Oven {
     private int temperature;
     private int cakes;
