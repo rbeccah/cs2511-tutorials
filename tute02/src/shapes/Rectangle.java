@@ -4,7 +4,9 @@ public class Rectangle extends Shape {
     public int height;
     public int width;
 
-    // ? Rectangle has 2 constructors. Why? 
+    // ? Rectangle has 2 constructors. Why?
+    // Sometimes we want to define all attributes of aclass upon instantialising, but other times we want it to be convienient and only define some  
+    // Method overloading - functions with the same name and the same return type but different parameters arguments
     public Rectangle(String color) {
         super(color);
         this.width = 1;
@@ -12,6 +14,12 @@ public class Rectangle extends Shape {
         System.out.println("Inside Rectangle constructor with one argument");
     }
 
+    /**
+     * Constructor for Rectangle
+     * @param name
+     * @param width
+     * @param height
+     */
     public Rectangle(String name, int width, int height) {
         this(name);
         this.width = width;
@@ -35,6 +43,8 @@ public class Rectangle extends Shape {
         System.out.println();
         
         System.out.println("Area of r2: " + r2.getArea());
+
+        System.out.println(r2.getClass());
 
         // ? What will this print out? 
         System.out.println("Number of shapes: " + Shape.getCount());

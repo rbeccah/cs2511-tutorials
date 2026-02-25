@@ -19,6 +19,10 @@ public class Square extends Rectangle {
         return length * length;
     }
 
+    public void squareMethod() {
+        return;
+    }
+
     @Override
     public void printMessage() {
         System.out.println("I am a Square");
