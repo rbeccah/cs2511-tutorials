@@ -3,15 +3,10 @@ package dogs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chihuahua implements Dog {
-    private String colour;
+public class Chihuahua extends Dog {
 
     public Chihuahua(String colour) {
-        this.colour = colour;
-    }
-
-    public String getColour() {
-        return colour;
+        super(colour);
     }
 
     @Override

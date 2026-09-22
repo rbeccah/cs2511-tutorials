@@ -5,6 +5,7 @@ public class Rectangle extends Shape {
     public int width;
 
     // ? Rectangle has 2 constructors. Why? 
+    // Method overloading - functions with the same name and return type but different parameters or arguments
     public Rectangle(String color) {
         super(color);
         this.width = 1;
@@ -28,6 +29,10 @@ public class Rectangle extends Shape {
         System.out.println("I am a Rectangle");
     }
 
+    private void printRectangleOnlyMessage() {
+        System.out.println("rectangle");
+    }
+
     public static void main(String[] args) {
         // ? How does the program know which constructor we are calling? 
         Rectangle r = new Rectangle("red", 10, 20); // What will this print?
@@ -38,6 +43,10 @@ public class Rectangle extends Shape {
 
         // ? What will this print out? 
         System.out.println("Number of shapes: " + Shape.getCount());
+
+        r2.printMessage();
+
+        // Integer.parseInt() <- static
     }
 }
 
