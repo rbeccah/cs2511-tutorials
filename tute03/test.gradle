@@ -10,7 +10,7 @@ plugins {
 }
 
 dependencies {
-    testImplementation files('lib/junit-platform-console-standalone-1.7.0-M1.jar')
+    testImplementation files('lib/junit-platform-console-standalone-6.0.1.jar')
 }
 
 test {
