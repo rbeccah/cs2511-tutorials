@@ -7,16 +7,22 @@ import java.util.stream.Collectors;
 
 public class App {
     public static void main(String[] args) {
-        List<String> strings = List.of("1", "2", "3", "4", "5");
+        List<String> strings = new ArrayList<String>(Arrays.asList(new String[] {"1", "2", "3", "4", "5"}));
         for (String string : strings) {
             System.out.println(string);
         }
 
-        List<String> strings2 = List.of("1", "2", "3", "4", "5");
+        List<String> strings2 = new ArrayList<String>(Arrays.asList(new String[] {"1", "2", "3", "4", "5"}));
         List<Integer> ints = new ArrayList<Integer>();
         for (String string : strings2) {
             ints.add(Integer.parseInt(string));
         }
         System.out.println(ints);
+
+         //* Demonstrate filter and reduce */
+        // From a list of integers, take only the even numbers and find the sum
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 2);
     }
+
+
 }
