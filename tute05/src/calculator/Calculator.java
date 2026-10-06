@@ -1,4 +1,4 @@
-package calculator;
+package src.calculator;
 
 /**
 * @author Nick Patrikeos
