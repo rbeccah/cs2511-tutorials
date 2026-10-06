@@ -1,15 +1,15 @@
-package calculator;
+package src.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
-import calculator.composite.Addition;
-import calculator.composite.Division;
-import calculator.composite.Expression;
-import calculator.composite.Multiplication;
-import calculator.composite.Subtraction;
+import src.calculator.composite.Addition;
+import src.calculator.composite.Division;
+import src.calculator.composite.Expression;
+import src.calculator.composite.Multiplication;
+import src.calculator.composite.Subtraction;
 
 public class CalculatorTest {
     @Test
