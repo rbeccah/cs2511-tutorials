@@ -1,15 +1,15 @@
-package src.calculator;
+package calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
-import src.calculator.composite.Addition;
-import src.calculator.composite.Division;
-import src.calculator.composite.Expression;
-import src.calculator.composite.Multiplication;
-import src.calculator.composite.Subtraction;
+import calculator.composite.Addition;
+import calculator.composite.Division;
+import calculator.composite.Expression;
+import calculator.composite.Multiplication;
+import calculator.composite.Subtraction;
 
 public class CalculatorTest {
     @Test
@@ -49,5 +49,18 @@ public class CalculatorTest {
     @Test
     public void testIntegration() {
         // ((1 + 2) - ((3 / 4) * 5))
+        // = (3 - (0.75 * 5))
+        // = (3 - 3.75)
+        // = - 0.75
+
+        Calculator calculator = new Calculator(
+            new Subtraction(
+                new Addition(new Number(1), new Number(2)),
+                new Multiplication(
+                    new Division(new Number(3), new Number(4)),
+                    new Number(5)
+                ))
+        );
+        assertEquals(-0.75, calculator.compute());
     }
 }

@@ -1,5 +1,6 @@
 package computer;
 
+// * Subject interface
 public interface Peripheral {
     public void addSubscriber(Program newSubscriber);
 

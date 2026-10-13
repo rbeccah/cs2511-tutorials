@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import computer.Program;
+import computer.Event;
 import computer.Peripheral;
 
 public class Keyboard implements Peripheral {
@@ -23,7 +24,11 @@ public class Keyboard implements Peripheral {
 
     @Override
     public void createEvent(String message) {
-        // TODO: implement
+        Event event = new Event(name, message, true);
+        
+        for (Program subscriber : subscribers) {
+            subscriber.notify(event);
+        }
     }
 
     @Override

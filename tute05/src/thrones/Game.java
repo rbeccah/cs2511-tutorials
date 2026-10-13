@@ -38,13 +38,16 @@ public class Game {
 
 
     public static void main(String[] args) {
-        // TODO: Replace constructors below with Factory Pattern
+        // Replace constructors below with factory pattern
+        // Right now, the user is deciding the positions of the characters upon instantiation. 
+        // We want to change it so characters are randomly assigned their position
         Game game = new Game();
-        game.addCharacter(new King(0, 0));
-        game.addCharacter(new Dragon(0, 1));
-        game.addCharacter(new Queen(2, 2));
-        game.play();
+        
+        Character king = EntityFactory.createKing();
+        Character knight = EntityFactory.createKnight();
+        Character queen = EntityFactory.createQueen();
+        Character troll = EntityFactory.createDragon();
 
-        // TODO: Construct 1 Queen wearing Helmet and Chainmail using the Decorator Pattern
+        game.play();
     }
 }

@@ -7,8 +7,10 @@ import computer.peripherals.Keyboard;
 import computer.peripherals.Mouse;
 
 // ? Who are the Observers?
+// * Those that implement Program (i.e. WordProcessor, DeviceLog)
 
 // ? Who are the Subjects? 
+// * Those that implement Peripheral (i.e. Keyboard, Mouse)
 
 class Computer {
     private List<Peripheral> peripherals;
@@ -22,19 +24,25 @@ class Computer {
     public void startProgram(Program program) {
         this.programs.add(program);
 
-        // TODO: implement observer!
+        for (Peripheral peripheral : peripherals) {
+            peripheral.addSubscriber(program);
+        }
     }
 
     public void plugInPeripheral(Peripheral peripheral) {
         this.peripherals.add(peripheral);
 
-        // TODO: implement observer!
+        for (Program prog : programs) {
+            peripheral.addSubscriber(prog);
+        }
     }
 
     public void unplugPeripheral(Peripheral peripheral) {
         this.peripherals.remove(peripheral);
 
-        // TODO: implement observer!
+        for (Program prog : programs) {
+            peripheral.removeSubscriber(prog);
+        }
     }
 
     public static void main(String[] args) {

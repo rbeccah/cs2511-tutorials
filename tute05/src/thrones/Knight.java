@@ -7,7 +7,10 @@ package thrones;
  * @author Robert Clifton-Everest
  *
  */
-public class Knight extends Character {
+/*
+ * Concrete component subclasses
+ */
+public class Knight extends CharacterBase {
 
     public Knight(int x, int y) {
         super(x, y);
